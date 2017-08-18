@@ -1,0 +1,18 @@
+alabaster==0.7.10
+appdirs==1.4.3
+Babel==2.4.0
+## !! Could not determine repository location
+code-contracts==0.1
+colorama==0.3.7
+docutils==0.13.1
+imagesize==0.7.1
+Jinja2==2.9.5
+MarkupSafe==1.0
+packaging==16.8
+Pygments==2.2.0
+pyparsing==2.2.0
+pytz==2016.10
+requests==2.13.0
+six==1.10.0
+snowballstemmer==1.2.1
+Sphinx==1.5.3

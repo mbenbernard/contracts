@@ -1,0 +1,7 @@
+.idea
+code_contracts.egg-info/
+docs/build
+*.pyc
+*.swp
+*.egg
+env/
