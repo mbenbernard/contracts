@@ -16,16 +16,22 @@ Release v\ |version|. (:ref:`Installation <install>`)
     Functions that impose requirements in the body of a function or method. This is not a complete suite of assertions;
     instead, they are meant to be complementary to those available in :class:`~unittest.TestCase`.
 
-The goal of this library is not to make Python a statically-typed language. Instead, it aims to prevent costly errors
-and bugs in your code.
+The goal of this library is not to make Python a statically-typed language. Instead, it aims to help you define what
+is expected from your code before it executes, so that you avoid costly errors and bugs.
 
 Here's a quick example demonstrating the use of contracts:
 
-.. literalinclude:: sample.py
+.. literalinclude:: ../../samples/contracts_quick_example.py
    :language: python
    :linenos:
 
-**code-contracts** officially supports Python 3.0 and onward.
+And here's an example of assertions used in the context of unit tests:
+
+.. literalinclude:: ../../samples/assertions_quick_example.py
+   :language: python
+   :linenos:
+
+**code-contracts** officially supports Python 3.0 and onwards.
 
 The User Guide
 --------------
@@ -35,7 +41,7 @@ The User Guide
 
     intro
     install
-    quickstart
+    examples
 
 The API Documentation / Guide
 -----------------------------
