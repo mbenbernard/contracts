@@ -96,32 +96,16 @@ Here's an example using :func:`~contracts.assertion.does_not_raise`:
    :linenos:
    :lines: 4-
 
-Expected behavior
------------------
-
-When a contract or an assertion fails, you can expect it to raise an exception as follows:
-
-+----------------------------+-----------------------------------------+
-| Module                     | Exception(s) raised                     |
-+============================+=========================================+
-| :mod:`~contracts.contract` | :class:`TypeError`, :class:`ValueError` |
-+----------------------------+-----------------------------------------+
-| :mod:`~contracts.assertion`| :class:`AssertionError`                 |
-+----------------------------+-----------------------------------------+
-
-The contracts provided can be used as either `preconditions`_ or `postconditions`_, meaning that requirements can be
-checked either before executing a function or after, respectively.
-
 Limitations
 -----------
 
 *code-contracts* has been battle-tested via unit testing and heavy use across several projects, so it's fairly stable.
 
-But don't expect it to be a full-fledged library; it only provides a few functions to fill the gaps of existing
-libraries.
+But don't expect it to be a full-fledged library, as it only provides a few functions to fill the gaps of existing
+libraries. Remember that *code-contracts* is essentially an experiment with OSS, as stated previously.
 
-Also, remember that *code-contracts* is essentially an experiment with OSS, as stated previously. Feel free to submit
-bug reports and feature requests, though.
+Finally, right now, you can't use contract functions outside of a function or method - this is as designed. Note that
+assertion functions don't have the same limitation, though.
 
 License
 -------
@@ -134,8 +118,6 @@ The current documentation is released under the terms of the `Creative Commons A
 
 .. _Pypi: https://pypi.python.org/pypi
 .. _design-by-contract: https://en.wikipedia.org/wiki/Design_by_contract
-.. _preconditions: https://en.wikipedia.org/wiki/Precondition
-.. _postconditions: https://en.wikipedia.org/wiki/Postcondition
 .. _Assertions: https://en.wikipedia.org/wiki/Assertion_(software_development)
 .. _PyContracts: https://pypi.python.org/pypi/PyContracts/
 .. _Augment: https://pypi.python.org/pypi/Augment/

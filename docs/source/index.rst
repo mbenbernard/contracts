@@ -43,7 +43,7 @@ The User Guide
 
     intro
     install
-    examples
+    usage
 
 The API Documentation / Guide
 -----------------------------
