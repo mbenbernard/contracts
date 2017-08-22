@@ -38,6 +38,14 @@ only a few functions. But:
 Then you'd most likely need to create a collection of well-tested contracts, so that you can reuse them whenever needed.
 Enters the *code-contracts* library!
 
+Here's how using contracts greatly simplifies the previous example:
+
+.. literalinclude:: ../../samples/contracts_vs_manual_checks_example.py
+   :language: python
+   :linenos:
+   :lines: 27-32
+   :dedent: 4
+
 Why a new library?
 ------------------
 
@@ -48,74 +56,81 @@ So why create another library?
 
 Well, because I, the author, am not completely satisfied with what exists out there. Many of those libraries:
 
-1. Impose contracts to be written as decorators - which, arguably, might cause them to be viewed as optional and
-   not as an essential part of the code.
+1. Impose contracts to be written as decorators - which, arguably, might lead people to view them as optional or as an
+   afterthought, while they're really an essential part of your code.
 2. Impose constraints to be written as strings, or as pretty complex lambda expressions - which makes debugging harder,
    and which encourages copy-paste.
 3. Raise their own custom exceptions, instead of raising built-in ones like :class:`~ValueError` or :class:`~TypeError`.
 4. Mix up the concepts of contract and assertion, while they're normally not intended to be used interchangeably.
 5. Have fairly limited documentation, or none at all.
-6. Have a fairly limiting license, like some flavor of GPL.
+6. Have a fairly limiting license, like some flavor of GPL_.
 7. Only perform `type checking`_.
 
 Additionally, there were some `early efforts`_ by the Python community to make contracts officially part of the
 language, but the idea was apparently abandoned_.
 
-Finally - major spoiler alert - *code-contracts* was essentially made available as an experiment to learn more about
-packaging, deploying and documenting `open-source software (OSS)`_.
+Finally - major spoiler alert - *code-contracts* is above all else an experiment to learn more about packaging,
+deploying and documenting `open-source software (OSS)`_.
 
 What about assertions?
 ----------------------
 
-`Assertions`_ are similar to contracts, in that they impose requirements on your code, but they also differ in some
+`Assertions`_ are similar to contracts, in that they impose requirements on your code. But they also differ in some
 important ways:
 
-- They're generally used for debugging purposes only.but they're generally used in a different context.
+- They're generally used for debugging purposes only.
+- They're often used in unit tests to validate results.
 
--IMO, contracts and assertions go hand in hand.
+So assertions and contracts are definitely complementary to each other.
 
+Python already provides many assertions in the :class:`~unittest.TestCase` class, but a few important ones are missing.
+For example, you can validate that a function raises an error using :meth:`~unittest.TestCase.assertRaises`, but
+there's nothing like `assertNotRaises` or anything equivalent, surprisingly.
 
+This is why *code-contracts* provides a few of those useful, but missing assertions, in addition to contracts.
 
-It's often assumed that contracts and  play the same role.
+Here's an example using :func:`~contracts.assertion.does_not_raise`:
 
-Contracts are often used in the form of `preconditions`_ and `postconditions`_, meaning that requirements are either
-checked before executing a function or after, respectively. They can also be used in different ways depending on the
-library....
+.. literalinclude:: ../../samples/assertions_quick_example.py
+   :language: python
+   :linenos:
+   :lines: 4-
 
-and they're often implemented in the
-form of `assertions`_.
+Expected behavior
+-----------------
 
+When a contract or an assertion fails, you can expect it to raise an exception as follows:
 
++----------------------------+-----------------------------------------+
+| Module                     | Exception(s) raised                     |
++============================+=========================================+
+| :mod:`~contracts.contract` | :class:`TypeError`, :class:`ValueError` |
++----------------------------+-----------------------------------------+
+| :mod:`~contracts.assertion`| :class:`AssertionError`                 |
++----------------------------+-----------------------------------------+
 
-PEP proposal for contracts: https://www.python.org/dev/peps/pep-0316/
+The contracts provided can be used as either `preconditions`_ or `postconditions`_, meaning that requirements can be
+checked either before executing a function or after, respectively.
 
+Limitations
+-----------
 
+*code-contracts* has been battle-tested via unit testing and heavy use across several projects, so it's fairly stable.
 
-> Explain that it's partly just an exercise/experiment for OSS and documentation.
-> So it's not complete. And it doesn't aim to be a full-fledged code contract/assertion library.
-> Declarative approach; not an afterthought or optional. This is officially part of the code. Decorators are often used to things that are useful, but optional. I don't like this idea.
-> In my opinion, contracts and assertions go hand in hand.
-> I coded it well before other contract libraries were made available.
+But don't expect it to be a full-fledged library; it only provides a few functions to fill the gaps of existing
+libraries.
 
--The idea to to raise a built-in exception whenever a requirement fails.
--Instead of doing "if something: raise ValueError..." you call contract.something(...).
--Should always be enabled. It's similar to raising ValueError yourself.
+Also, remember that *code-contracts* is essentially an experiment with OSS, as stated previously. Feel free to submit
+bug reports and feature requests, though.
 
-So far, Python's philosophy has always been to document the behavior of your functions/methods and let them fail
-depending on the inputs that they receive. But this approach has proven to be unreliable for projects that reach a
-certain size - at least for me. Many corner cases thus go untested. And eventually this causes very bad bugs in
-production. Yep, the kind of stuff that **could** be avoided!
+License
+-------
 
-This is where code contracts and assertions come to the rescue. There has already been a PEP
+*code-contracts* is released under the terms of the `Apache License Version 2.0`_:
 
+    .. include:: ../../LICENSE
 
-#. Beautiful is better than ugly.
-#. Explicit is better than implicit.
-#. Simple is better than complex.
-#. Complex is better than complicated.
-#. Readability counts.
-
-All contributions to Requests should keep these important rules in mind.
+The current documentation is released under the terms of the `Creative Commons Attribution-ShareAlike 4.0 International License`_.
 
 .. _Pypi: https://pypi.python.org/pypi
 .. _design-by-contract: https://en.wikipedia.org/wiki/Design_by_contract
@@ -128,47 +143,6 @@ All contributions to Requests should keep these important rules in mind.
 .. _`early efforts`: https://www.python.org/dev/peps/pep-0316/
 .. _abandoned: https://mail.python.org/pipermail/python-list/2007-August/436816.html
 .. _`open-source software (OSS)`: https://en.wikipedia.org/wiki/Open-source_software
-
-Behavior
---------
-
-Exceptions being raised:
-
-ValueError
-TypeError
-AssertionError
-
-Features
---------
-
-Provide a table summarizing the available contracts and assertions.
-
-Limitations
------------
-
-> It's NOT complete.
-
-Apache2 License
----------------
-
-A large number of open source projects you find today are `GPL Licensed`_.
-While the GPL has its time and place, it should most certainly not be your
-go-to license for your next open source project.
-
-A project that is released as GPL cannot be used in any commercial product
-without the product itself also being offered as open source.
-
-The MIT, BSD, ISC, and Apache2 licenses are great alternatives to the GPL
-that allow your open-source software to be used freely in proprietary,
-closed-source software.
-
-Requests is released under terms of `Apache2 License`_.
-
-.. _`GPL Licensed`: http://www.opensource.org/licenses/gpl-license.php
-.. _`Apache2 License`: http://opensource.org/licenses/Apache-2.0
-
-
-Requests License
-----------------
-
-    .. include:: ../../LICENSE
+.. _GPL: https://www.gnu.org/licenses/gpl-3.0.en.html
+.. _`Apache License Version 2.0`: https://www.apache.org/licenses/LICENSE-2.0
+.. _`Creative Commons Attribution-ShareAlike 4.0 International License`: https://creativecommons.org/licenses/by-sa/4.0/
