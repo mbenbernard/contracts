@@ -1,3 +1,5 @@
+# Copyright 2017 Benoit Bernard All Rights Reserved.
+
 from contracts import contract
 
 

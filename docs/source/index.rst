@@ -17,19 +17,21 @@ Release v\ |version|. (:ref:`Installation <install>`)
     instead, they are meant to be complementary to those available in :class:`~unittest.TestCase`.
 
 The goal of this library is not to make Python a statically-typed language. Instead, it aims to help you define what
-is expected from your code before it executes, so that you avoid costly errors and bugs.
+is expected from your code before it executes, so that you can more easily track and prevent bugs.
 
-Here's a quick example demonstrating the use of contracts:
+So here's how you can use contracts:
 
 .. literalinclude:: ../../samples/contracts_quick_example.py
    :language: python
    :linenos:
+   :lines: 3-
 
-And here's an example of assertions used in the context of unit tests:
+And here's how you can use assertions to unit test the above function:
 
 .. literalinclude:: ../../samples/assertions_quick_example.py
    :language: python
    :linenos:
+   :lines: 4-
 
 **code-contracts** officially supports Python 3.0 and onwards.
 
@@ -50,10 +52,3 @@ The API Documentation / Guide
     :maxdepth: 2
 
     api
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
