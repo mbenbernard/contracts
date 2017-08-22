@@ -93,9 +93,11 @@ Now, here's a concrete example of what happens when an assertion fails:
 
 So when you run this script, the assertion raises an :class:`AssertionError` indicating that
 :func:`~samples.contract_failure_example.build_rocket` itself raises a :class:`ValueError`. Again, this is because the
-`name` parameter is empty. This means that the expected behavior is validated.
+`name` parameter is empty.
 
-Note that it's a bit more common to use assertions in unit tests.
+As you can see, assertions are very handy to validate the expected behavior of a function or method. Note that it's a
+bit more common to use assertions in the context of more formal unit tests, like when using the :mod:`~unittest` module,
+as it handles :class:`AssertionError` a little bit more gracefully.
 
 Available contracts and assertions
 ----------------------------------
