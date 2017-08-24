@@ -25,13 +25,13 @@ Expected behavior
 
 When a contract or an assertion fails, you can expect it to raise an exception as follows:
 
-+----------------------------+-----------------------------------------+
-| Entity                     | Exception(s) raised                     |
-+============================+=========================================+
-| :mod:`~contracts.contract` | :class:`TypeError`, :class:`ValueError` |
-+----------------------------+-----------------------------------------+
-| :mod:`~contracts.assertion`| :class:`AssertionError`                 |
-+----------------------------+-----------------------------------------+
++----------------------------+--------------------------------------------------------------------+
+| Entity                     | Exception(s) raised                                                |
++============================+====================================================================+
+| :mod:`~contracts.contract` | :class:`TypeError`, :class:`ValueError` or :class:`AttributeError` |
++----------------------------+--------------------------------------------------------------------+
+| :mod:`~contracts.assertion`| :class:`AssertionError`                                            |
++----------------------------+--------------------------------------------------------------------+
 
 The contracts provided can be used as either `preconditions`_ or `postconditions`_, meaning that requirements can be
 checked either before executing a function or after, respectively.
@@ -99,10 +99,59 @@ As you can see, assertions are very handy to validate the expected behavior of a
 bit more common to use assertions in the context of more formal unit tests, like when using the :mod:`~unittest` module,
 as it handles :class:`AssertionError` a little bit more gracefully.
 
-Available contracts and assertions
-----------------------------------
+Available contracts
+-------------------
 
--Features/available asserts + contracts in a table
+*code-contracts* contains the following contract functions:
+
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| Function                                             | Description                                                                                                                                        | Exception raised        |
++======================================================+====================================================================================================================================================+=========================+
+| :func:`~contracts.contract.is_not_none`              | Checks that the specified value is not equal to None.                                                                                              | :class:`TypeError`      |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_not_empty`             | Checks that the specified value is not empty.                                                                                                      | :class:`ValueError`     |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_of_type`               | Checks that the specified value is of the specified type.                                                                                          | :class:`TypeError`      |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_equal_to_any`          | Checks that the specified value is equal to at least one of the expected values.                                                                   | :class:`ValueError`     |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_true`                  | Checks that the specified value is equal to True.                                                                                                  | :class:`TypeError`      |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_false`                 | Checks that the specified value is equal to False.                                                                                                 | :class:`TypeError`      |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_equal`                 | Checks that the specified value is strictly equal to the expected value.                                                                           | :class:`ValueError`     |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_greater_than`          | Checks that the specified value is greater than the expected value.                                                                                | :class:`ValueError`     |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_greater_than_or_equal` | Checks that the specified value is greater than or strictly equal to the expected value.                                                           | :class:`ValueError`     |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.all_have_attribute`       | Checks that all objects contained in value - be it a single object or an :class:`~collections.Iterable` of objects - have the specified attribute. | :class:`AttributeError` |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.all_have_method`          | Checks that all objects contained in value - be it a single object or an :class:`~collections.Iterable` of objects have the specified method.      | :class:`AttributeError` |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_callable`              | Checks that the specified value is a callable object (i.e. has a '__call__' attribute).                                                            | :class:`TypeError`      |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.contract.is_instance`              | Checks that the specified value is an instance of the given class.                                                                                 | :class:`TypeError`      |
++------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+
+Available assertions
+--------------------
+
+*code-contracts* contains the following assertion functions:
+
++------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| Function                                                   | Description                                                                                                                  | Exception raised        |
++============================================================+==============================================================================================================================+=========================+
+| :func:`~contracts.assertion.does_not_raise`                | Asserts that the specified callable object does not raise an exception of the specified class when called.                   | :class:`AssertionError` |
++------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.assertion.raises`                        | Asserts that the specified callable object raises an exception of the specified class when called.                           | :class:`AssertionError` |
++------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.assertion.raises_with_msg`               | Asserts that the specified callable object raises an exception of the specified type with the specified message when called. | :class:`AssertionError` |
++------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.assertion.not_called_with`               | Asserts that the specified mock object was never called with a specific sequence of arguments.                               | :class:`AssertionError` |
++------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+
+| :func:`~contracts.assertion.contains_one_element_of_class` | Asserts that the specified iterable object contains one and only one element of the specified class.                         | :class:`AssertionError` |
++------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+
 
 Concrete examples
 -----------------
