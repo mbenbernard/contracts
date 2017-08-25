@@ -1,8 +1,9 @@
+.. _api:
+
 contracts package
 =================
 
-Submodules
-----------
+What follows is an API reference detailing the various functions available in *code-contracts*.
 
 contracts.assertion module
 --------------------------
@@ -16,15 +17,6 @@ contracts.contract module
 -------------------------
 
 .. automodule:: contracts.contract
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: contracts
     :members:
     :undoc-members:
     :show-inheritance:
