@@ -29,8 +29,8 @@ def is_not_empty(value):
     Checks that the specified value is not empty.
 
     :param value: the value to check. To be considered empty, it must be equal to None, or equal to "" if it's a string.
-                  If it's an :class:`~collections.Iterable` object, its length must be equal to 0. Any other object type
-                  will never be considered empty.
+                  If it's an :class:`~collections.abc.Iterable` object, its length must be equal to 0. Any other object
+                  type will never be considered empty.
     :raises: :class:`ValueError` if the value is considered empty.
     """
     if value is None or (type(value) is str and not value) or (isinstance(value, Iterable) and len(value) == 0):
@@ -42,15 +42,16 @@ def is_equal_to_any(value, expected_values, expression_str=None):
     Checks that the specified value is equal to at least one of the expected values.
 
     :param value: the value to check.
-    :param expected_values: an :class:`~collections.Iterable` object containing the expected values.
+    :param expected_values: an :class:`~collections.abc.Iterable` object containing the expected values.
     :param expression_str: (optional) a string representing the evaluated boolean expression (e.g. 'b > c').
     :raises: :class:`ValueError` if the value is not equal to any of the expected values.
     """
     if value not in expected_values:
         raise ValueError(
-            "{0} with value {1} and type {2} was not equal to any of the expected values.".format(expression_str if expression_str else _get_parameter_name(),
-                                                                                                  str(value),
-                                                                                                  type(value).__name__))
+            "{0} with value {1} and type {2} was not equal to any of the expected values.".format(
+                expression_str if expression_str else _get_parameter_name(),
+                str(value),
+                type(value).__name__))
 
 
 def is_true(value, expression_str=None):
@@ -123,10 +124,10 @@ def is_greater_than_or_equal(value, expected_value):
 
 def all_have_attribute(value, attribute_name):
     """
-    Checks that all objects contained in value - be it a single object or an :class:`~collections.Iterable` of objects -
-    have the specified attribute.
+    Checks that all objects contained in value - be it a single object or an :class:`~collections.abc.Iterable` of
+    objects - have the specified attribute.
 
-    :param value: the value to check. It can be a single object, or an an :class:`~collections.Iterable` of objects.
+    :param value: the value to check. It can be a single object, or an an :class:`~collections.abc.Iterable` of objects.
     :param attribute_name: a string containing the name of the attribute to look for.
     :raises: :class:`AttributeError` if one of the objects does not contain the specified attribute.
     """
@@ -144,10 +145,10 @@ def all_have_attribute(value, attribute_name):
 
 def all_have_method(value, method_name):
     """
-    Checks that all objects contained in value - be it a single object or an :class:`~collections.Iterable` of objects -
-    have the specified method.
+    Checks that all objects contained in value - be it a single object or an :class:`~collections.abc.Iterable` of
+    objects - have the specified method.
 
-    :param value: the value to check. It can be a single object, or an an :class:`~collections.Iterable` of objects.
+    :param value: the value to check. It can be a single object, or an an :class:`~collections.abc.Iterable` of objects.
     :param method_name: a string containing the name of the method to look for.
     :raises: :class:`AttributeError` if one of the objects does not contain the specified method.
     """

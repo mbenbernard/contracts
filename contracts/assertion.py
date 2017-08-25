@@ -29,7 +29,7 @@ def raises(exception_cls, callable_obj, *args, **kwargs):
     """
     Asserts that the specified callable object raises an exception of the specified class when called.
 
-    Can be used instead of :func:`~unittest.TestCase.assertRaises` for consistency across unit tests,
+    Can be used instead of :meth:`~unittest.TestCase.assertRaises` for consistency across unit tests,
     especially when :func:`~contracts.assertion.does_not_raise` is also used.
 
     :param exception_cls: the class of the exception.
@@ -74,7 +74,7 @@ def not_called_with(mock_obj, *args, **kwargs):
     """
     Asserts that the specified mock object was never called with a specific sequence of arguments.
 
-    Acts as a complementary function, because there is no :func:`assert_not_called_with` function available in the
+    Acts as a complementary function, because there is no :meth:`assert_not_called_with` method available in the
     :class:`~unittest.mock.Mock` class.
 
     :param mock_obj: :class:`~unittest.mock.Mock` object.
@@ -103,7 +103,7 @@ def contains_one_element_of_class(obj_cls, iterable_obj):
     Asserts that the specified iterable object contains one and only one element of the specified class.
 
     :param obj_cls: the class of the object that is expected to be found in the iterable.
-    :param iterable_obj: :class:`~collections.Iterable` object.
+    :param iterable_obj: :class:`~collections.abc.Iterable` object.
     :raises: :class:`AssertionError` if the callable does not raise an exception of the specified class.
     """
     if len(iterable_obj) != 1 or type(iterable_obj[0]) is not obj_cls:
