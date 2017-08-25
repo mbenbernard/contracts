@@ -3,7 +3,7 @@
 """
 Module containing code assertions.
 
-It complements the assertions already available in the :class:~unittest.TestCase` class.
+It complements the assertions already available in the :class:`~unittest.TestCase` class.
 """
 
 
