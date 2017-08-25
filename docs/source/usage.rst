@@ -6,7 +6,7 @@ Usage
 Importing the right module
 --------------------------
 
-*code-contracts* is split into two different modules: contract_ and assertion_.
+*code-contracts* is split into two different modules: :mod:`~contracts.contract` and :mod:`~contracts.assertion`.
 
 To use contracts, just import the following module:
 
@@ -33,8 +33,8 @@ When a contract or an assertion fails, you can expect it to raise an exception a
 | :mod:`~contracts.assertion`| :class:`AssertionError`                                            |
 +----------------------------+--------------------------------------------------------------------+
 
-The contracts provided can be used as either `preconditions`_ or `postconditions`_, meaning that requirements can be
-checked either before executing a function or after, respectively.
+The contracts provided are intended to be used as `preconditions`_, meaning that requirements will be checked before
+executing a function.
 
 Contracts' behavior
 ^^^^^^^^^^^^^^^^^^^
@@ -193,7 +193,4 @@ Available assertions
 |                                                            |                                                                                                                              |    :lines: 23                                                 |
 +------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
 
-.. _contract: abc
-.. _assertion: abc
 .. _preconditions: https://en.wikipedia.org/wiki/Precondition
-.. _postconditions: https://en.wikipedia.org/wiki/Postcondition
