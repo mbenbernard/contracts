@@ -39,7 +39,7 @@ checked either before executing a function or after, respectively.
 Contracts' behavior
 ^^^^^^^^^^^^^^^^^^^
 
-Here's a concrete example of what happens when a contract fails:
+Here's what happens when a contract fails:
 
 .. literalinclude:: ../../samples/contract_failure_example.py
    :language: python
@@ -64,7 +64,7 @@ track the error and fix the calling code accordingly.
 Assertions' behavior
 ^^^^^^^^^^^^^^^^^^^^
 
-Now, here's a concrete example of what happens when an assertion fails:
+Here's what happens when an assertion fails:
 
 .. literalinclude:: ../../samples/assertion_failure_example.py
    :language: python
@@ -111,8 +111,6 @@ Available contracts
 +------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
 | :func:`~contracts.contract.is_not_empty`             | Checks that the specified value is not empty.                                                                                                      | :class:`ValueError`     |
 +------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
-| :func:`~contracts.contract.is_of_type`               | Checks that the specified value is of the specified type.                                                                                          | :class:`TypeError`      |
-+------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
 | :func:`~contracts.contract.is_equal_to_any`          | Checks that the specified value is equal to at least one of the expected values.                                                                   | :class:`ValueError`     |
 +------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
 | :func:`~contracts.contract.is_true`                  | Checks that the specified value is equal to True.                                                                                                  | :class:`TypeError`      |
@@ -134,6 +132,22 @@ Available contracts
 | :func:`~contracts.contract.is_instance`              | Checks that the specified value is an instance of the given class.                                                                                 | :class:`TypeError`      |
 +------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------+
 
+.. note::
+
+   Some of these contract functions contain an optional parameter named `expression_str`. Its purpose is to allow you
+   to pass a string representation of the value passed to the function. This is especially useful if, for example,
+   the value isn't a single, discrete value, but a boolean expression such as x > y. In such a case, you can pass
+   'x > y' in `expression_str`. This expression will be used to create a more meaningful error message if the contract
+   fails.
+
+
+Examples
+^^^^^^^^
+
+:func:`~contracts.contract.is_not_none`:
+
+
+
 Available assertions
 --------------------
 
@@ -152,13 +166,6 @@ Available assertions
 +------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+
 | :func:`~contracts.assertion.contains_one_element_of_class` | Asserts that the specified iterable object contains one and only one element of the specified class.                         | :class:`AssertionError` |
 +------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+
-
-Concrete examples
------------------
-
--For each contract function
--For each assertion function
-
 
 .. _contract: abc
 .. _assertion: abc

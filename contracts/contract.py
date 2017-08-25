@@ -37,21 +37,6 @@ def is_not_empty(value):
         raise ValueError("{0} was empty.".format(_get_parameter_name()))
 
 
-def is_of_type(value, value_type):
-    """
-    Checks that the specified value is of the specified type.
-
-    :param value: the value to check.
-    :param value_type: the expected :class:`type`.
-    :raises: :class:`TypeError` if the value is not of the expected type.
-    """
-    actual_value_type = type(value)
-    if actual_value_type is not value_type:
-        raise TypeError("{0} was of type {1} while the expected type was {2}.".format(_get_parameter_name(),
-                                                                                      actual_value_type.__name__,
-                                                                                      value_type.__name__))
-
-
 def is_equal_to_any(value, expected_values, expression_str=None):
     """
     Checks that the specified value is equal to at least one of the expected values.
@@ -185,7 +170,7 @@ def is_callable(value):
     :raises: :class:`TypeError` if the value is not a callable object.
     """
     if not hasattr(value, '__call__'):
-        raise TypeError("{0} was empty.".format(_get_parameter_name()))
+        raise TypeError("{0} with type {1} was not callable.".format(_get_parameter_name(), type(value).__name__))
 
 
 def is_instance(value, cls):
