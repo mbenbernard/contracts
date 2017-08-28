@@ -112,7 +112,7 @@ License
 
 *code-contracts* is released under the terms of the `Apache License Version 2.0`_:
 
-    .. include:: ../../LICENSE
+    .. include:: ../../LICENSE.txt
 
 The current documentation is released under the terms of the `Creative Commons Attribution-ShareAlike 4.0 International License`_.
 
