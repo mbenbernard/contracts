@@ -7,7 +7,7 @@ code-contracts: Contracts and Assertions for Python
     Functions that impose requirements when entering a function or method - also commonly called *preconditions*.
 2. **Assertions**
     Functions that impose requirements in the body of a function or method. This is not a complete suite of assertions;
-    instead, they are meant to be complementary to those available in :class:`~unittest.TestCase`.
+    instead, they are meant to be complementary to those available in `unittest.TestCase`.
 
 The goal of this library is not to make Python a statically-typed language. Instead, it aims to help you define what
 is expected from your code before it executes, so that you can more easily track and prevent bugs.
@@ -15,7 +15,6 @@ is expected from your code before it executes, so that you can more easily track
 So here's how you can use contracts:
 
 .. code-block:: python
-   :linenos:
 
     from contracts import contract
 
@@ -33,7 +32,6 @@ So here's how you can use contracts:
 And here's how you can use assertions to unit test the above function:
 
 .. code-block:: python
-   :linenos:
 
     import unittest
     from contracts import assertion
