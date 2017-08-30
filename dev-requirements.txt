@@ -1,17 +1,21 @@
 alabaster==0.7.10
 appdirs==1.4.3
 Babel==2.4.0
--e git+https://github.com/mbenbernard/contracts.git@2a0f8f430ce7affc8451e8e030e7d2442ade6d20#egg=code_contracts
+-e git+https://github.com/mbenbernard/contracts.git@bb425a850d1ec2d67cc16d2f19018998782a1db3#egg=code_contracts
 colorama==0.3.7
 docutils==0.13.1
 imagesize==0.7.1
 Jinja2==2.9.5
 MarkupSafe==1.0
 packaging==16.8
+pkginfo==1.4.1
 Pygments==2.2.0
 pyparsing==2.2.0
 pytz==2016.10
 requests==2.13.0
+requests-toolbelt==0.8.0
 six==1.10.0
 snowballstemmer==1.2.1
 Sphinx==1.5.3
+tqdm==4.15.0
+twine==1.9.1
