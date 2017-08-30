@@ -3,7 +3,7 @@
 import contracts
 from setuptools import setup
 
-with open('README.rst', 'r', 'utf-8') as f:
+with open("README.rst", "r", encoding="utf-8") as f:
     readme = f.read()
 
 setup(name=contracts.__title__,

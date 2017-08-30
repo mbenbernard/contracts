@@ -5,3 +5,4 @@ docs/build
 *.swp
 *.egg
 env/
+dist

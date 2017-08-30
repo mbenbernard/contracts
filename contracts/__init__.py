@@ -2,6 +2,10 @@
 code-contracts library
 """
 
+# Make sure that submodules are directly accessible via the top-level 'contracts' module, without having to import
+# them explicitly.
+from . import contract, assertion
+
 # We use Semantic Versioning. See: http://semver.org/
 __title__ = 'code-contracts'
 __version__ = '0.1.0'
