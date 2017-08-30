@@ -41,7 +41,7 @@ And here's how you can use assertions to unit test the above function:
         def test_build_rocket(self):
             assertion.does_not_raise(ValueError, build_rocket, "Falcon", 9, "SpaceX")
 
-**code-contracts** officially supports Python 3.0 and onwards.
+**code-contracts** officially supports Python 3.3 and onwards.
 
 Installation
 ------------

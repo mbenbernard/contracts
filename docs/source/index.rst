@@ -33,7 +33,7 @@ And here's how you can use assertions to unit test the above function:
    :linenos:
    :lines: 4-
 
-**code-contracts** officially supports Python 3.0 and onwards.
+**code-contracts** officially supports Python 3.3 and onwards.
 
 The User Guide
 --------------
