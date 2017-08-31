@@ -55,4 +55,4 @@ Simply run the following command in your favorite terminal:
 Documentation
 -------------
 
-The full documentation is available at http://www.google.com/
+The full documentation is available at http://contracts.readthedocs.io/.
