@@ -8,8 +8,8 @@ from . import contract, assertion
 
 # We use Semantic Versioning. See: http://semver.org/
 __title__ = 'code-contracts'
-__version__ = '0.1.0'
-__build__ = 0x000100
+__version__ = '0.1.1'
+__build__ = 0x000101
 __author__ = 'Benoit Bernard'
 __author_email__ = 'aGlAYmVuYmVybmFyZGJsb2cuY29t@base64.email'
 __license__ = 'Apache 2.0'
